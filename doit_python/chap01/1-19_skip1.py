@@ -1,0 +1,9 @@
+# 1~12까지 8을 건너뛰고 출력하기 1
+
+for i in range(1, 13):
+    if i == 8:
+        continue
+    else:
+        print(i, end = " ")
+
+print()
