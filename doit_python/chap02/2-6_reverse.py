@@ -20,3 +20,6 @@ if __name__ == '__main__':
     print('배열 원소를 역순으로 정렬했습니다.')
     for i in range(nx):
         print(f'x[{i}] = {x[i]}')
+
+    # x.reverse()
+    # y = reversed(x) # x의 원소를 역순으로 정렬해 y에 대입
