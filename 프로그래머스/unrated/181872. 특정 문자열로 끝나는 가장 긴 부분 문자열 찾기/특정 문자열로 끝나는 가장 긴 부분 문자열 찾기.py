@@ -12,6 +12,5 @@ def solution(myString, pat):
             if i[1] == pat:
                 list_idx.append(int(i[0]))
         return myString[:list_idx[-1]+1]
-    #idx = max(list_idx)
             
     return answer
