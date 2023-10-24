@@ -1,10 +1,10 @@
 # [level unrated] 날짜 비교하기 - 181838 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181838) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181838#) 
 
 ### 성능 요약
 
-메모리: 10.1 MB, 시간: 0.00 ms
+메모리: 10.2 MB, 시간: 0.00 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2023년 10월 3일 2:5:38
+2023년 10월 3일 2:6:27
 
 ### 문제 설명
 
