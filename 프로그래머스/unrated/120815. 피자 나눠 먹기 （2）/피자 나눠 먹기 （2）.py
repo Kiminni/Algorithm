@@ -1,10 +1,8 @@
 def solution(n):
-    
-    if n % 6 == 0 :
-        return n / 6
-    elif n % 2 == 0:
-        return n / 2
-    elif n % 3 == 0 :
-        return n / 3
-    else:
-        return n 
+
+    for i in range(6,606,6):
+        if i%n == 0:
+            answer = i/6
+            break
+
+    return answer
