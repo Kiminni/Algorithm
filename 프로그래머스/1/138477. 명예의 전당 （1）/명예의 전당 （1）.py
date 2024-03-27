@@ -1,17 +1,13 @@
 import queue
 def solution(k, score):
-    hall = []
+    q = []
+
     answer = []
     for s in score:
-        if len(hall) < k:
-            hall.append(s)
-            hall = sorted(hall, reverse=True)
-            answer.append(hall[-1])
-        
-        elif len(hall) == k:
-            hall.append(s)
-            hall = sorted(hall, reverse=True)
-            hall.pop()
-            answer.append(hall[-1])
-        
+
+        q.append(s)
+        if (len(q) > k):
+            q.remove(min(q))
+        answer.append(min(q))
+
     return answer
