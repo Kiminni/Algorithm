@@ -4,7 +4,6 @@ def solution(X, Y):
     x = Counter(X)
     y = Counter(Y)
 
-
     for i in x:
         cnt = 0
         if i in y: # x에 있는 숫자가 y에도 있다면
