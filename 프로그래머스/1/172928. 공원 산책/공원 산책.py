@@ -1,0 +1,28 @@
+def solution(park, routes):
+    x, y = 0,0
+    w, h = len(park[0]), len(park)
+    op = {"N":(-1,0), "S":(1,0), "W":(0,-1), "E":(0,1)}
+    
+    for i in range(h): # 시작점 찾기
+        for j in range(w):
+            if park[i][j] == 'S':
+                x,y = i,j
+                break
+                
+    for r in routes:
+        d, n = r.split(" ") # 방향, 이동횟수
+        dx, dy = x, y  # 현재위치
+        
+        for i in range(int(n)):
+            # 이동할 위치만큼 이동 
+            nx = x + op[d][0]
+            ny = y + op[d][1]
+        
+            if 0 <= nx <= h-1 and 0 <= ny <= w-1 and (park[nx][ny]!="X"):
+                x, y = nx, ny
+                    
+            else: # 이동 못 하면 현재 위치 유지
+                x, y = dx, dy
+                break
+
+    return (x,y)
