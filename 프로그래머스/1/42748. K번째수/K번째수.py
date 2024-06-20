@@ -1,9 +1,8 @@
 def solution(array, commands):
     answer = []
-    for com in commands:
-        tmp = [] 
-        tmp.append(sorted(array[com[0] - 1 :com[1]]))   
-        answer.append(tmp[0][com[2] - 1])
-        
-
+    for c in commands:
+        c[0], c[1], c[2] = c[0] - 1, c[1] - 1, c[2] - 1
+        arr = array[c[0] : c[1] + 1]
+        arr = sorted(arr)
+        answer.append(arr[c[2]])
     return answer
