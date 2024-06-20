@@ -12,3 +12,15 @@ def solution(prices):
         answer.append(time)
         
     return answer
+
+    prices = deque(prices)
+    answer = []
+    while prices:
+        price = prices.popleft()
+        time = 0
+        for p in prices:
+            if price >= p :
+                time += 1
+            else:
+                break
+        answer.append(time)
