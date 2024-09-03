@@ -4,10 +4,14 @@ def solution(prices):
     answer = []
     while prices:
         price = prices.popleft()
-        count = 0
+        time = 0
         for p in prices:
-            count += 1
-            if p < price:
+            time += 1
+            if price > p:
                 break
-        answer.append(count)
+        answer.append(time)
     return answer
+    
+                
+        
+    
