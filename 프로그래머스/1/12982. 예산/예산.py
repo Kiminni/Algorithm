@@ -4,13 +4,8 @@ def solution(d, budget):
     tmp = budget
     for i in d:
         tmp = tmp - i
-        if tmp >= 0:
-            answer += 1
+        if tmp < 0 :
+            continue
         else:
-            break
+            answer += 1
     return answer
-            
-        
-        
-    
-        
