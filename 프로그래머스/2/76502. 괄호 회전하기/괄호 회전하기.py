@@ -1,25 +1,37 @@
-from collections import deque
 def solution(s):
     answer = 0
+    n = len(s)
+    new_s = s[:]
+    # 문자열 길이만큼 반복
+    for _ in range(n):
+        # 유효한지 판별
+        if isValid(new_s):
+            answer += 1
+        # 괄호 회전하기    
+        new_s = new_s[1:] + new_s[0]
+        
+    return answer
+
+
+def isValid(s):
+    stack = []
     dic = {
         "(":")",
         "{":"}", 
         "[":"]"    
     }
-    d = deque(s)
-    for i in range(len(s)):
-        stack = []
-        tmp = d.popleft()
-        d.append(tmp)
-        for j in range(len(d)):
-            if d[j] in dic:
-                stack.append(d[j])
-            elif stack == [] and d[j] in dic.values():
-                stack.append(d[j])
-                break
-            if stack != [] and d[j] in dic.values():
-                if dic[stack[-1]] == d[j]:
-                    stack.pop()
-        if stack == [] and j == len(d) - 1:
-            answer += 1
-    return answer
+    for p in s:
+        # 열린 괄호 => push
+        # 닫힌 괄호 => pop
+        if p in dic:
+            stack.append(p)
+        else:
+            if not stack or dic[stack[-1]] != p:
+                return False
+
+            elif stack and dic[stack[-1]] == p:
+                stack.pop()
+            
+            
+    return not stack
+            
