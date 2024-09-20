@@ -1,7 +1,17 @@
 def solution(k, dungeons):
-    answer = 0
-    for dungeon in dungeons:
-        if k >= dungeon[1] and k >= dungeon[0]:
-            k -= dungeon[1]
-            answer += 1
-    return answer
+    n = len(dungeons)
+    picked = [False] * n
+
+    def recur(cur_k, num):
+        max_answer = num
+
+        for i in range(n):
+            if not picked[i] and cur_k >= dungeons[i][0]:
+                picked[i] = True
+                current = recur(cur_k - dungeons[i][1], num + 1)
+                max_answer = max(max_answer, current)
+                picked[i] = False
+
+        return max_answer
+
+    return recur(k, 0)
