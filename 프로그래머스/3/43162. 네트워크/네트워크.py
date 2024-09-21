@@ -1,22 +1,20 @@
 def solution(n, computers):
     graph = {}
-    visited = [False] * n
     answer = 0
-    
+    visited = [False] * len(computers)
+    n = len(computers)
     for i in range(n):
-        temp = []
+        tmp = []
         for j in range(n):
             if i != j and computers[i][j] == 1:
-                temp.append(j)
-        graph[i] = temp
+                tmp.append(j)
+        graph[i] = tmp
     
-    for cur_v in range(n):
-        if not visited[cur_v]:
-            dfs(cur_v, visited, graph)
+    for i in range(n):
+        if not visited[i]:
+            dfs(i, visited, graph)
             answer += 1
-
     return answer
-
 
 def dfs(cur_v, visited, graph):
     visited[cur_v] = True
