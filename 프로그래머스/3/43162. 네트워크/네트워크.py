@@ -1,15 +1,15 @@
 def solution(n, computers):
     graph = {}
     answer = 0
-    visited = [False] * len(computers)
     n = len(computers)
+    visited = [False] * n
     for i in range(n):
         tmp = []
         for j in range(n):
             if i != j and computers[i][j] == 1:
                 tmp.append(j)
         graph[i] = tmp
-    
+    print(visited)
     for i in range(n):
         if not visited[i]:
             dfs(i, visited, graph)
