@@ -1,15 +1,9 @@
-def prime(n):
-    if n < 2:
-        return False
-    for i in range(2, int(n**0.5 + 1)) :
-        if n % i == 0 :
-            return False
-    return True
 def solution(numbers):
     answer = 0
     nums = set()
     n = len(numbers)
     picked = [False] * n
+    
     def recur(current):
         for i in range(n):
             if not picked[i]:
@@ -22,5 +16,12 @@ def solution(numbers):
     for num in nums:
         if prime(num):
             answer += 1
-        
     return answer
+
+def prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
