@@ -1,8 +1,9 @@
 def solution(n, computers):
-    graph = {}
-    n = len(computers)
-    visited= [False] * len(computers)
     answer = 0
+    n = len(computers)
+    visited = [False] * len(computers)
+    graph = {}
+    
     for i in range(n):
         tmp = []
         for j in range(n):
@@ -12,13 +13,13 @@ def solution(n, computers):
     
     for c in range(n):
         if not visited[c]:
-            dfs(c, visited, graph)
+            dfs(visited, graph, c)
             answer += 1
-    
+            
     return answer
 
-def dfs(cur_v, visited, graph):
+def dfs(visited, graph, cur_v):
     visited[cur_v] = True
     for next_v in graph[cur_v]:
         if not visited[next_v]:
-            dfs(next_v, visited, graph)
+            dfs(visited, graph, next_v)
