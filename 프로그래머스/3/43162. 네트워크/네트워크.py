@@ -11,16 +11,15 @@ def solution(n, computers):
                 tmp.append(j)
         graph[i] = tmp
     
-    for c in range(n):
-        if not visited[c]:
-            dfs(visited, graph, c)
-            answer += 1
-    
+    for i in range(n):
+        if not visited[i]:
+            dfs(visited, graph, i)
+            answer += 1    
     return answer
-    
 
+        
 def dfs(visited, graph, cur_v):
     visited[cur_v] = True
-    for next_v in graph[cur_v]:
-        if not visited[next_v] :
-            dfs(visited, graph, next_v)
+    for i in graph[cur_v]:
+        if not visited[i]:
+            dfs(visited, graph, i)
