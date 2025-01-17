@@ -1,6 +1,10 @@
 def solution(phone_book):
-    phone_book.sort()
-    for i in range(len(phone_book) - 1):
-        if phone_book[i+1].startswith(phone_book[i]):
-            return False
+    dic = {}
+    for phone in phone_book:
+        dic[phone] = True
+    for phone in phone_book:
+        for i in range(1, len(phone)):
+            if phone[:i] in dic:
+                return False  
     return True
+        
