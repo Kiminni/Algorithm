@@ -9,20 +9,16 @@
 
 # left ~ right 로 반복문을 실행합니다.
 # 이제 약수의 개수를 확인합니다.
-# 
+# 보게 되면, 이제 홀수 = 제곱수 일 때만이니까.
 """
 def solution(left, right):
     answer = 0
     for number in range(left, right + 1):
-        temp = 0
-        for div in range(1, number+ 1):
-            if number % div == 0:
-                temp += 1
-            
-        if temp % 2 == 0:
-            answer += number
-        else:
+        if int(number ** 0.5) ** 2 == number:
             answer -= number
+        else:
+            answer += number
+        
     
 
     return answer
