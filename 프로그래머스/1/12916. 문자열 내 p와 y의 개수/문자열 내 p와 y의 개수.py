@@ -9,14 +9,8 @@
 
 """
 def solution(s):
-    ans_p, ans_y = 0, 0
-    for string in s.lower():
-        if string == "p":
-            ans_p += 1
-        elif string == "y":
-            ans_y += 1
-    # 이 상태에서는 개수가 항상 없더라도, 결국엔 다 0으로 처리가 되기 때문에 무조건 true
-    return ans_p == ans_y
+    s = s.lower()
+    return s.count("p") == s.count("y")
             
 
     
