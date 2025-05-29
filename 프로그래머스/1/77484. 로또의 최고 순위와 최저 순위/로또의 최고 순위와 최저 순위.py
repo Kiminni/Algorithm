@@ -1,12 +1,57 @@
+"""
+로또 45개의 숫자 중 6개를 맞추는 게임
+1순위 6순위
+6개를 다 맞춘 거
+5개
+4개
+3개
+2개 
+그 외
+
+알아볼 수 없는 번호 0이라고 칭함.
+44, 1, 0, 0, 31, 25
+31, 10, 45, 1, 6, 19
+
+순서와 상관 없이, 로또에 숫자가 일치한다면 -> 맞는것
+지금 예시 -> 1, 31
+0, 0 => 나머지 10, 6 / 44, 25든 뭐든 들어간다면, 3등이 됩니다.
+전부 다 맞는다면 3등, 다 틀린다면 5등이 됩니다.
+그러니, 이 떄 최고 순위와 최저 순위를 정해서 배열로 표시하면 됩니다.
+"""
+
+"""
+1등 ~ 6등까지를 한 번 나열을 해야할 듯 합니다.
+몇 개를 맞았는지를 처리하는 dictionary를 하나를 써서. 
+어떤 식으로 표기가 되는지를 확인
+{6: 1, 5: 2, 4: 3, 3: 4, 2: 5}
+
+그러면,여기서 이제 관련 배열을 보고 확인하는 절차를 들어가야 함.
+반복문을 통해서 문제를 확인
+"""
+
 def solution(lottos, win_nums):
-    ans_dict = {6:1, 5:2, 4:3, 3:4, 2:5, 1:6, 0:6}
-    min_answer = 0
-    max_answer = 0
-    for i in lottos:
-        if i in win_nums:
-            min_answer += 1
-            max_answer += 1
-        elif i == 0 :
-            max_answer += 1
+    dic = {
+        6 : 1, 
+        5 : 2, 
+        4 : 3, 
+        3 : 4, 
+        2 : 5,
+        1 : 6,
+        0 : 6
+    }
+
+    check = 0
+    max_check = 0
+    # 만약에 win_nums에 lotto가 있다 -> max_check min_check에 하나씩 더하는 식
+    for lotto in lottos:
+        if lotto in win_nums:
+            check += 1
+            max_check += 1
+        elif lotto == 0:
+            max_check += 1
     
-    return [ans_dict[max_answer], ans_dict[min_answer]]
+    return [dic[max_check], dic[check]]
+        
+            
+            
+    
