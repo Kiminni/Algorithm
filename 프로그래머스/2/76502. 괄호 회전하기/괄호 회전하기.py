@@ -1,37 +1,32 @@
-def solution(s):
-    answer = 0
-    n = len(s)
-    new_s = s + s
-    
-    # 문자열 길이만큼 반복
-    for i in range(n):
-        # 유효한지 판별
-        if isValid(new_s[i:i+n]):
-            answer += 1
-        # 괄호 회전하기    
-        
-    return answer
+from collections import deque
 
-
-def isValid(s):
+def isValid(parent):
     stack = []
     dic = {
-        "(":")",
-        "{":"}", 
-        "[":"]"    
+        "(" : ")",
+        "{" : "}",
+        "[" : "]"
     }
-    for p in s:
-        # 열린 괄호 => push
-        # 닫힌 괄호 => pop
-        if p in dic:
-            stack.append(p)
-        else:
-            if not stack or dic[stack[-1]] != p:
-                return False
 
-            elif stack and dic[stack[-1]] == p:
-                stack.pop()
-            
-            
+    for p in parent:
+        if p in dic.keys():
+            stack.append(p)
+
+        elif not stack and p not in dic.keys():
+            return False
+
+        elif dic[stack[-1]] == p and stack:
+            stack.pop()
+
     return not stack
-            
+
+def solution(s):    
+    answer = 0
+    s = deque(s)
+    for i in range(len(s)):
+        tmp = s.popleft()
+        s.append(tmp)
+        if isValid(s):
+            answer += 1
+    
+    return answer
