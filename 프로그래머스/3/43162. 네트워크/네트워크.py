@@ -1,21 +1,22 @@
 def solution(n, computers):
-    num = len(computers)
-    visited = [False] * n
+    n = len(computers)
     dic = {}
+    visited = [False] * n
     answer = 0
     
-    for i in range(num):
+    for i in range(n):
         tmp = []
-        for j in range(num):
-            if computers[i][j] == 1 and i != j:
+        for j in range(n):
+            if i !=j and computers[i][j] == 1:
                 tmp.append(j)
         dic[i] = tmp
-        
-    for i in range(num):
+    
+    for i in range(n):
         if not visited[i]:
             dfs(visited, i, dic)
             answer += 1
     return answer
+    
     
 def dfs(visited, cur_v, dic):
     visited[cur_v] = True
@@ -23,4 +24,4 @@ def dfs(visited, cur_v, dic):
         if not visited[i]:
             dfs(visited, i, dic)
     
-    
+        
