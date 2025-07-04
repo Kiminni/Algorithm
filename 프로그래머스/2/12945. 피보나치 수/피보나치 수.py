@@ -1,8 +1,6 @@
 def solution(n):
-    answer = []
-    for i in range(n + 1):
-        if i == 0 or i == 1:
-            answer.append(i)
-        else:
-            answer.append(answer[i - 1] + answer[i - 2])
-    return answer[-1] % 1234567
+    fib = [0, 1, 1, 2]
+    for i in range(4, n + 1):
+        fib.append(fib[i - 2] + fib[i - 1])
+        
+    return fib[n] % 1234567
