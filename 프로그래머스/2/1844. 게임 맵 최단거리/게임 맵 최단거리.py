@@ -1,17 +1,16 @@
 from collections import deque
 def solution(maps):
+    N = len(maps)
+    M = len(maps[0])
     
-    answer = 0
-    
-    def bfs(x, y, maps):
-        N = len(maps)
-        M = len(maps[0])
-
-        queue = deque()
-        queue.append((0, 0))
-        
-        dx = [0, 0, 1, -1]
+    def bfs(x, y):
+        dx = [0, 0, -1, 1]
         dy = [1, -1, 0, 0]
+        
+        queue = deque()
+        queue.append((x, y))
+        count = 1
+        
         while queue:
             x, y = queue.popleft()
             for i in range(4):
@@ -22,10 +21,13 @@ def solution(maps):
                     maps[nx][ny] = maps[x][y] + 1
                     queue.append((nx, ny))
         
-        if maps[N-1][M-1] == 1:
-            return -1
-        return maps[N-1][M-1]
     
-    return bfs(0, 0, maps)
-            
-
+    bfs(0, 0)
+    answer = maps[N-1][M-1]
+    
+    if answer == 1:
+        return -1
+        
+    
+    
+    return answer
