@@ -1,11 +1,10 @@
 def solution(d, budget):
-    d.sort()
-    tmp = budget
     answer = 0
+    d.sort()
     for i in d:
-        tmp = tmp - i
-        if tmp >= 0:
+        if budget - i >= 0:
             answer += 1
+            budget -= i
         else:
             break
     return answer
