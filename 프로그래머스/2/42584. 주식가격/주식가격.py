@@ -4,7 +4,7 @@ def solution(prices):
     prices = deque(prices)
     while prices: 
         count = 0
-        price = prices.popleft() # 처음에 뺀 값 1 [2, 3, 2, 3]
+        price = prices.popleft() 
         for p in prices:
             count += 1
             if price > p :
