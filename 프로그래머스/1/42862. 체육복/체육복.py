@@ -1,12 +1,20 @@
 def solution(n, lost, reserve):
+    lost.sort()
+    reserve.sort()
+
+    real_lost = []
+    real_reserve = []
     
-    set_reserve = set(reserve) - set(lost)
-    set_lost = set(lost) - set(reserve)
+    for l in lost:
+        if l not in reserve:
+            real_lost.append(l)
+        else:
+            reserve.remove(l)  
     
-    for num in set_reserve:
-        if num - 1 in set_lost:
-            set_lost.remove(num - 1)
-        elif num + 1 in set_lost:
-            set_lost.remove(num + 1)
-        
-    return n - len(set_lost)
+    for r in real_reserve + reserve:
+        if r - 1 in real_lost:
+            real_lost.remove(r - 1)
+        elif r + 1 in real_lost:
+            real_lost.remove(r + 1)
+    
+    return n - len(real_lost)
